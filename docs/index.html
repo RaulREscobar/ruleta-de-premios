@@ -22,12 +22,12 @@
     <!--Funciones Propias-->
     <script src="../JS/ruleta.js"></script>
 
-    <title>Ruleta de Probabilidad</title>
+    <title>Ruleta de Premios</title>
 
 </head>
 
 <body>
-    <div class="container">
+    <div class="container img-container">
 
         <div class="row align-items-center">
 
@@ -48,18 +48,19 @@ $ 3000
                     </textarea>
                     <br>
                     <input type="button" class="btn btn-outline-success" onclick="leerElementos()" value="Generar Ruleta"/>
-
                 </div>
-
             </div>
-
             <!--Ruleta-->
-            <div class="col-8">
+            <div class="col-9">
                 <h1 style="text-align: center;">¡Premio por objetivos cumplidos!</h1>
-
+                <!-- <div >
+                    <img class="img-center" src="../img/coactiva-group-arrow.jpeg" alt="">
+                </div> -->
                 <div id="ruletaContainter" onclick="objRuleta.startAnimation();">
-                    <canvas id="canvas" width="500" height="510">
+                    <img class="img-center" src="../img/coactiva-group-arrow.jpeg" alt="">
+                    <canvas id="canvas" width="800" height="600">
                         Canvas not supported, use another browser.
+                     
                     </canvas>
                 </div>
 
@@ -67,31 +68,6 @@ $ 3000
                     let theWheel = new Winwheel();
                 </script>
             </div>
-
-            <!--Probabilidades-->
-         <!--    <div class="col-2">
-                <div class="card" style="width: 15rem;">
-                   -->  
-                    <!--Probabilidad total -->
-               <!--      <div class="card">
-                        <h6 class="card-header">Tiros m&aacute;ximos</h6>
-                        <div class="card-body text-center">
-                            <p class="card-text">Ingresa la cantidad de tiros máximos para obtener un premio en particular: </p>
-                            <input type="text" id="tirosTotales" class="form-control">
-                            <br>
-                            <input type="button" onclick="generarProbabilidad()" class="btn btn-outline-primary btn-sm" value="Obtener Probabilidad">
-                        </div>
-                    </div>           
-              
-                <br>
-            
-                <h6 class="card-header">Probabilidades:</h6>
-                    <div class="card-body">
-                        <div class="card-text" id="texto"></div>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
     </div>
 

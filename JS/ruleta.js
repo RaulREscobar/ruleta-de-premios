@@ -8,8 +8,9 @@ var ctx;
 //Función para despliegue de mensaje de ganador
 function Mensaje() {
     winningSegment = objRuleta.getIndicatedSegment();
+    /* SonidoFinal(); */
     swal({
-        title: " ¡Usted ha ganado el "+winningSegment.text+"!",
+        title: " ¡Felicitaciones ganaste "+winningSegment.text+"!",
         //showCancelButton: true,
         confirmButtonColor: "#e74c3c",
         confirmButtonText: "Reiniciar",
@@ -31,12 +32,12 @@ function Mensaje() {
 
 //Dibujar el triángulo de elección
 function DibujarTriangulo() {
-    distnaciaX = 50;
+    distnaciaX = 200;
     distnaciaY = -10;
     ctx = objRuleta.ctx;
     ctx.strokeStyle = 'navy';
     ctx.fillStyle = '#000000';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 2;0
     ctx.beginPath();
     ctx.moveTo(distnaciaX + 170, distnaciaY + 5);
     ctx.lineTo(distnaciaX + 230, distnaciaY + 5);
@@ -53,8 +54,8 @@ function DibujarRuleta(ArregloElementos) {
         'textAlignment': 'center',
         'numSegments': ArregloElementos.length, //Cantidad de divisiones
         'lineWidth':3,
-        'outerRadius': 245,
-        'innerRadius': 5,
+        'outerRadius': 280,
+        'innerRadius': 30,
         'segments':ArregloElementos,
         'pins':true,
         'animation':{
@@ -73,26 +74,31 @@ function leerElementos() {
     txtListaElementos=$('#ListaPremios').val().trim();
     var Elementos = txtListaElementos.split('\n');
     var ElementosRuleta= [];
-    Elementos.forEach(function (Elemento) {
-        if(Elemento){
-        ElementosRuleta.push({ 'fillStyle': "#" + (Math.floor(Math.random()*16777215).toString(16)), 'text': Elemento }); //Size para modificar el tamaño
+    Elementos.forEach(function (Elemento, index) {
+        if((index +1) % 3 == 0){
+        ElementosRuleta.push({ 'fillStyle': "#14B76E" , 'text': Elemento }); //Size para modificar el tamaño
+        }else if ((index +1) % 2 == 0) {
+            ElementosRuleta.push({ 'fillStyle': "#0000FF" , 'text': Elemento }); //Size para modificar el tamaño
+        }else {
+            ElementosRuleta.push({ 'fillStyle': "#ff8000" , 'text': Elemento }); //Size para modificar el tamaño
         }
     });
     DibujarRuleta(ElementosRuleta);
 }
 
-function generarProbabilidad() {
-  let elementos = document.getElementById("ListaPremios").value.split("\n");
-  let tirosTotales = parseInt(document.getElementById("tirosTotales").value);
-  let probabilidadTotal = 1 - Math.pow((elementos.length-1)/elementos.length,tirosTotales);
-  let probabilidadParticular = (1/(elementos.length));
+leerElementos();
+            var audio = new Audio('../alarma.mp3');  // Create audio object and load desired file.
+            function SonidoFinal()
+                {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio.play();
+                }
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'ruleta','//www.google-analytics.com/analytics.js','ga');
+                    ga('create', 'UA-74824848-1', 'auto');
+                    ga('send', 'pageview');
 
-  //Redondear a tres dígitos
-  let probabilidadTotalround = probabilidadTotal.toFixed(3);
-  let probabilidadParticularround = probabilidadParticular.toFixed(3);
-
-  //Texto de probabilidad 
-  let probabilidadTxt = "La probabilidad de obtener un premio en particular es de " + "<b>"+ probabilidadParticularround +"</b>.<br>"+ "La probabilidad de obtener un premio en particular en " + tirosTotales +" tiros es de <b>"+ probabilidadTotalround + "</b>.<br>";
-
-  document.getElementById("texto").innerHTML = probabilidadTxt;
-}
+                    (adsbygoogle = window.adsbygoogle || []).push({});

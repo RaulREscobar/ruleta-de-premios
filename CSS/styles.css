@@ -1,12 +1,32 @@
 #ruletaContainer{
+   
+    position: relative;
+    display: flex;
+    width: 800px;
     background-position: center;
     align-items: center;
     cursor: pointer;
 }
 
 #canvas{
-    padding: 30px;
+    font-size: 150px;
+    padding: 0px;
     padding-top: 50px;
-    margin: auto;
+    margin:auto;
     display: flex;
+}
+.img-center{
+    z-index: 999;
+    position: absolute;
+    border-radius: 50%;
+    right: 75px;
+    top: 60px;
+    width: 150px;
+}
+.img-container{
+    background-color:beige;
+}
+
+.f-size {
+    font-size:  150px;
 }
